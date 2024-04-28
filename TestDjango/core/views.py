@@ -3,9 +3,38 @@ from django.conf.urls.static import static
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.models import User
-
+from .models import Usuario
+import requests
 
 # Create your views here.
+# Create your views here.
+def iniciar_sesion(request):
+    if request.method =='POST':
+        username = request.POST.get('user')
+        password = request.POST.get('pass')
+        print("Datos del Form",username,password)
+        #return render(request,'core/login_usuario.html')        
+        usuarioBD = Usuario.objects.filter(username=username).first()
+        print(usuarioBD)
+        if usuarioBD is not None:
+           if usuarioBD.password == password:
+              if usuarioBD.perfil == 1:
+                 print("Home administrador")
+                 return redirect('home')
+              if usuarioBD.perfil == 2:
+                 print("Home Usuario")
+                 return redirect('home')
+              else:
+                 print("No se encontrò perfil")
+                 return render(request,'core/iniciar_sesion.html')
+           else:
+              print("Password Incorrecta")
+              return render(request,'core/iniciar_sesion.html')
+        else:
+           print("Usuario no existe")
+           return render(request,'core/iniciar_sesion.html')
+    else:
+      return render(request,'core/iniciar_sesion.html')
 
 def home(request):
      return render(request, 'core/home.html')
@@ -35,16 +64,13 @@ def formulario(request):
         else:
             messages.error(request, 'Las contraseñas no coinciden')
     return render(request, 'core/formulario.html')
+#llamada de api
+def form_api_back(request):
+    url= "https://rickandmortyapi.com/api/character"
+    response = requests.get(url)
+    personajes = response.json().get('results',[])
 
-def iniciar_sesion(request):
-    if request.method == 'post':
-        username = request.POST['username']
-        password = request.POST['password']
-
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-        else:
-            messages.error(request, "Nombre de usuario o contraseña incorrecta")
-    return render(request, 'core/iniciar_sesion.html')
+    context = {
+        'personajes' : personajes
+    }
+    return render(request, 'core/form_api_back.html',context)

@@ -10,7 +10,8 @@ urlpatterns= [
     path('posts/', views.posts, name='posts'),
     path('detalle/', views.detalle, name='detalle'),
     path('formulario/', views.formulario, name='formulario'),
-    path('iniciar-sesion/', views.iniciar_sesion, name='iniciar-sesion'),
+    path('iniciar_sesion/', views.iniciar_sesion, name='iniciar-sesion'),
+    path('form-api-back',views.form_api_back,name="form_api_back"),
    
 
 ]
