@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Ingresados</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Asegúrate de vincular tu archivo CSS aquí -->
+</head>
+<body>
+    <h2>Datos Ingresados</h2>
+    <p>Usuario: <span id="displayUsername"></span></p>
+    <p>Correo electrónico: <span id="displayEmail"></span></p>
+
+    <!-- Botón para ir al foro -->
+    <button onclick="window.location.href='home.html'">Ir al foro</button>
+
+    <!-- Resto del contenido de la página -->
+    <script>
+        // Obtén los datos ingresados de la URL (puedes usar otras formas según tus necesidades)
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        const email = urlParams.get('email');
+
+        // Muestra los datos en la página
+        document.getElementById('displayUsername').textContent = username;
+        document.getElementById('displayEmail').textContent = email;
+    </script>
+</body>
+</html>
+

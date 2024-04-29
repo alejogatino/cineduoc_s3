@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imágenes de la colección</title>
+</head>
+<body>
+    <h1>Imágenes de la colección</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Poster</th>
+                <th>Backdrop</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for imagen in imagenes %}
+                <tr>
+                    <td><img src="{{% static imagen.poster_url %}}" alt="Poster"></td>
+                    <td><img src="{{% static imagen.backdrop_url %}}" alt="Backdrop"></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
