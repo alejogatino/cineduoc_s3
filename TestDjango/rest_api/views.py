@@ -19,13 +19,13 @@ from core.models import Persona
 from .serializers import PersonaSerializer
 
 ##Librerìas de autenticaciòn
-#from rest_framework.decorators import permission_classes
-#from rest_framework.authentication import TokenAuthentication
-#from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 @csrf_exempt
 @api_view(['GET','POST'])
-#@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticated,))
 def lista_persona(request):
     if request.method == 'GET':
         persona = Persona.objects.all()
