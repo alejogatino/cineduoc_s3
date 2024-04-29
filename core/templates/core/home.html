@@ -1,0 +1,259 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineClubDuoc</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <!--NavBar Section-->
+        <div class="navbar">
+            <nav class="navigation hide" id="navigation">
+                <span class="close-icon" id="close-icon" onclick="showIconBar()"><i class="fa fa-close"></i></span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="{% url 'home' %}">Inicio</a></li>
+                    <li class="nav-item"><a href="{% url 'posts' %}">Posteos</a></li>
+                    <li class="nav-item"><a href="{% url 'detalle' %}">Popular</a></li>
+                    <li class="nav-item"><a href="{% url 'formulario' %}">Registrarse</a></li>
+                    <li class="nav-item"><a href="{% url 'iniciar-sesion' %}">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+            <a class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a>
+            <div class="brand">CineClub Duoc</div>
+        </div>
+        <!--SearchBox Section-->
+        <div class="search-box">
+            <div>
+                
+                <select name="" id="">
+                    <option value="Everything">Buscar</option>
+                    <option value="Titles">Títulos</option>
+                    <option value="Descriptions">Descripción</option>
+                </select>
+                <input type="text" name="q" placeholder="Buscar ...">
+                <button><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+
+
+        <div class="subforum">
+            <div class="subforum-title">
+                <h1>Información General</h1>
+            </div>
+            <div class="subforum-row">
+                <div class="subforum-icon subforum-column center">
+                    <img src="{% static 'img/WhatsApp Image 2024-03-24 at 10.42.20 PM.jpeg' %}" alt="Icono de estrenos">
+                </div>
+                <div class="subforum-description subforum-column">
+                    <h4><a href="#">Reglas del Foro</a></h4>
+                    <p>Leer antes de postear.</p>
+                </div>
+                <div class="subforum-stats subforum-column center">
+                    <span>24 Posts | 12 Temas</span>
+                </div>
+                <div class="subforum-info subforum-column">
+                    <b><a href="">Último post</a></b> por <a href="">CualquierUsuario</a> 
+                    <br>el <small>24 de Marzo 2024</small>
+                </div>
+            </div>
+        </div>
+        <!--Mas-->
+        
+        <div class="subforum">
+            <div class="subforum-title">
+                <h1>Foros</h1>
+            </div>
+            <div class="subforum-row">
+                <div class="subforum-icon subforum-column center">
+                    <img src="{% static 'img/estrenos.jpg' %}" alt="Icono de estrenos">
+                </div>
+                <div class="subforum-description subforum-column">
+                    <h4><a href="{% url 'posts' %}">Estrenos</a></h4>
+                    <p>Aquí se discute todo sobre las últimas películas en taquilla.</p>
+                </div>
+                <div class="subforum-stats subforum-column center">
+                    <span>24 Posts | 12 Temas</span>
+                </div>
+                <div class="subforum-info subforum-column">
+                    <b><a href="">Último post</a></b> por <a href="">CualquierUsuario</a> 
+                    <br>el <small>24 de Marzo 2024</small>
+                </div>
+            </div>
+            <hr class="subforum-devider">
+            <div class="subforum-row">
+                <div class="subforum-icon subforum-column center">
+                    <img src="{% static 'img/cinearte.jpg' %}" alt="Icono de estrenos">
+                </div>
+                <div class="subforum-description subforum-column">
+                    <h4><a href="posts.html">Cine Arte</a></h4>
+                    <p>Para los fanáticos del cine independiente y experimental.</p>
+                </div>
+                <div class="subforum-stats subforum-column center">
+                    <span>24 Posts | 12 Temas</span>
+                </div>
+                <div class="subforum-info subforum-column">
+                    <b><a href="">Último post</a></b> por <a href="">CualquierUsuario</a> 
+                    <br>el <small>24 de Marzo 2024</small>
+                </div>
+            </div>
+            <hr class="subforum-devider">
+            <div class="subforum-row">
+                <div class="subforum-icon subforum-column center">
+                    <img src="{% static 'img/cinenostalgico.jpg' %}" alt="Icono de estrenos">
+                </div>
+                <div class="subforum-description subforum-column">
+                    <h4><a href="posts.html">Cine Nostálgico</a></h4>
+                    <p>Aquí se habla sobre las películas de antaño.</p>
+                </div>
+                <div class="subforum-stats subforum-column center">
+                    <span>24 Posts | 12 Temas</span>
+                </div>
+                <div class="subforum-info subforum-column">
+                    <b><a href="">Último post</a></b> por <a href="">CualquierUsuario</a> 
+                    <br>el <small>24 de Marzo 2024</small>
+                </div>
+            </div>
+            <hr class="subforum-devider">
+            <div class="subforum-row">
+                <div class="subforum-icon subforum-column center">
+                    <img src="{% static 'img/culto.jpg' %}" alt="Icono de estrenos">
+                </div>
+                <div class="subforum-description subforum-column">
+                    <h4><a href="posts.html">Películas de Culto</a></h4>
+                    <p>Films que definieron a generaciones enteras.</p>
+                </div>
+                <div class="subforum-stats subforum-column center">
+                    <span>24 Posts | 12 Temas</span>
+                </div>
+                <div class="subforum-info subforum-column">
+                    <b><a href="">Último post</a></b> por <a href="">CualquierUsuario</a> 
+                    <br>el <small>24 de Marzo 2024</small>
+                </div>
+            </div>
+            <hr class="subforum-devider">
+            <div class="subforum-row">
+                <div class="subforum-icon subforum-column center">
+                    <img src="{% static 'img/netflix.png' %}" alt="Icono de estrenos">
+                </div>
+                <div class="subforum-description subforum-column">
+                    <h4><a href="posts.html">Netflix</a></h4>
+                    <p>Si lo dan en Netflix, discutámoslo aquí.</p>
+                </div>
+                <div class="subforum-stats subforum-column center">
+                    <span>24 Posts | 12 Temas</span>
+                </div>
+                <div class="subforum-info subforum-column">
+                    <b><a href="">Último post</a></b> por <a href="">CualquierUsuario</a> 
+                    <br>el <small>24 de Marzo 2024</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="subforum">
+            <div class="subforum-title">
+                <h1>Misceláneo</h1>
+            </div>
+            <div class="subforum-row">
+                <div class="subforum-icon subforum-column center">
+                    <img src="img/series.jpeg" alt="Icono de estrenos">
+                </div>
+                <div class="subforum-description subforum-column">
+                    <h4><a href="posts.html">Series</a></h4>
+                    <p>Todos sobre las series de televisión.</p>
+                </div>
+                <div class="subforum-stats subforum-column center">
+                    <span>24 Posts | 12 Temas</span>
+                </div>
+                <div class="subforum-info subforum-column">
+                    <b><a href="">Último post</a></b> por <a href="">CualquierUsuario</a> 
+                    <br>el <small>24 de Marzo 2024</small>
+                </div>
+            </div>
+            <hr class="subforum-devider">
+            <div class="subforum-row">
+                <div class="subforum-icon subforum-column center">
+                    <img src="{% static 'img/juegos.jpeg' %}" alt="Icono de estrenos">
+                </div>
+                <div class="subforum-description subforum-column">
+                    <h4><a href="posts.html">Videojuegos</a></h4>
+                    <p>Comparte tu pasión por los juegos de video.</p>
+                </div>
+                <div class="subforum-stats subforum-column center">
+                    <span>24 Posts | 12 Temas</span>
+                </div>
+                <div class="subforum-info subforum-column">
+                    <b><a href="">Último post</a></b> por <a href="">CualquierUsuario</a> 
+                    <br>el <small>24 de Marzo 2024</small>
+                </div>
+            </div>
+            <hr class="subforum-devider">
+            <div class="subforum-row">
+                <div class="subforum-icon subforum-column center">
+                    <img src="{% static 'img/youtube.jpeg' %}" alt="Icono de estrenos">
+                </div>
+                <div class="subforum-description subforum-column">
+                    <h4><a href="posts.html">Youtube</a></h4>
+                    <p>Discusiones sobre canales de Youtube y videos.</p>
+                </div>
+                <div class="subforum-stats subforum-column center">
+                    <span>24 Posts | 12 Temas</span>
+                </div>
+                <div class="subforum-info subforum-column">
+                    <b><a href="">Último post</a></b> por <a href="">CualquierUsuario</a> 
+                    <br>el <small>24 de Marzo 2024</small>
+                </div>
+            </div>
+            <hr class="subforum-devider">
+            <div class="subforum-row">
+                <div class="subforum-icon subforum-column center">
+                    <img src="{% static 'img/libros.jpeg' %}" alt="Icono de estrenos">
+                </div>
+                <div class="subforum-description subforum-column">
+                    <h4><a href="posts.html">Libros</a></h4>
+                    <p>Postea tus reseñas y recomendaciones.</p>
+                </div>
+                <div class="subforum-stats subforum-column center">
+                    <span>24 Posts | 12 Temas</span>
+                </div>
+                <div class="subforum-info subforum-column">
+                    <b><a href="">Último post</a></b> por <a href="">CualquierUsuario</a> 
+                    <br>el <small>24 de Marzo 2024</small>
+                </div>
+            </div>
+
+           
+        </div>
+        <!---->
+    </div>
+
+    <!-- Forum Info -->
+    <div class="forum-info">
+        <div class="chart">
+            Stats &nbsp;<i class="fa fa-bar-chart"></i>
+        </div>
+        <span><u>5,369</u> Posts en <u>48</u> Temas por <u>8,124</u> Miembros.</span><br>
+        <span>Latest post: <b><a href="">Post al azar</a></b> el 15 de Diciembre 2021 por <a href="">CualquierUsuario</a></span>.<br>
+        <span>Mira <a href="">los posts más recientes</a> .</span><br>
+    </div>
+    <img href="{% static 'img/marvel.webp' %}">
+
+    <h1>Prueba</h1>
+    
+    
+    <img src="{% static 'img/fran.png'%}" alt="fran">
+    <footer>
+        <span>&copy;  Selmi Abderrahim | Todos los derechos reservados</span>
+    </footer>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
