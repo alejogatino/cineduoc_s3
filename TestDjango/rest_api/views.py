@@ -43,3 +43,22 @@ def lista_persona(request):
             print('error',serializer.errors)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
        
+@csrf_exempt
+@api_view(['GET','POST'])
+#@permission_classes((IsAuthenticated,))
+def lista_Movie(request):
+    if request.method == 'GET':
+        movie = Movie.objects.all()
+        serializer = MovieSerializer(movie, many=True)
+
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = MovieSerializer(data=data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status.HTTP_201_CREATED)
+        else:
+            print('error', serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -1,9 +1,11 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.conf.urls.static import static
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import Usuario
+from .models import Usuario, Persona
+from django.db import connections
 import requests
 
 # Create your views here.
@@ -87,3 +89,4 @@ def api_movie(request):
     data = response.json()
 
     return render(request, 'core/api_movie.html', {'data': data})
+
