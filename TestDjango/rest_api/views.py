@@ -1,35 +1,45 @@
 from django.shortcuts import render
-from rest_framework import status
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.responde import Response
-from rest_framework.parsers import JSONParser
-from rest_framework.authentification import TokenAuthentification
-from rest_framework.permissions import IsAuthenticated 
 
 # Create your views here.
+#Contrucciòn del Rest
+from rest_framework.response import Response
+#Visualizaciòn del API Rest
+from rest_framework.decorators import api_view
+# Seguridad (Eliminar o activar)
+from django.views.decorators.csrf import csrf_exempt
+# Formato Json
+from rest_framework.parsers import JSONParser
+#libreria de còdigo de respuesta
+from rest_framework import status
 
+from core.models import Movie
+from .serializers import MovieSerializer
+
+from core.models import Persona
+from .serializers import PersonaSerializer
+
+##Librerìas de autenticaciòn
+#from rest_framework.decorators import permission_classes
+#from rest_framework.authentication import TokenAuthentication
+#from rest_framework.permissions import IsAuthenticated
+
+@csrf_exempt
 @api_view(['GET','POST'])
-@permission_classes((IsAuthenticated,))
-
-@api_view(['GET','PUT','DELETE'])
-@permission_classes((IsAuthenticated,))
-
-@api_view(['POST'])
-def login(request):
+#@permission_classes((IsAuthenticated,))
+def lista_persona(request):
+    if request.method == 'GET':
+        persona = Persona.objects.all()
+        serializer = PersonaSerializer(persona,many=True)
+        return Response(serializer.data)
     
-    data = JSONParser().parse(request)
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = PersonaSerializer(data=data)
 
-    username = data['username']
-    password = data['password']
-    try:
-        user = User.objects.get (username=username)
-    except User.DoesNotExist:
-        return Response("Usuario Incorrecto")
-
-pass_valido = check_password(password, user.password)
-if not pass_valido:
-return Response ("Contraseña Incorrecta")
-
-# recuperar el token
-token, created = Token.objects.get_or_create(user=user)
-return Response(token.key)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status.HTTP_201_CREATED)
+        else:
+            print('error',serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+       

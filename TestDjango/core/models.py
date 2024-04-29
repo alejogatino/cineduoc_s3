@@ -23,3 +23,11 @@ class Usuario(models.Model):
     password = models.CharField(max_length=255, default='password_por_defecto')
 
     perfil = models.IntegerField(null=True,blank=True,verbose_name='perfil')
+
+class Movie(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    image = models.ImageField(upload_to='movies/')
+
+    def __str__(self):
+        return self.title
