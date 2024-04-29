@@ -1,74 +1,78 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>API BACK- Cine Duoc</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-     
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
-
 </head>
-<body>
-  <header>
-    <!--NavBar Section-->
-    <div class="navbar">
-        <nav class="navigation hide" id="navigation">
-            <span class="close-icon" id="close-icon" onclick="showIconBar()"><i class="fa fa-close"></i></span>
-            <ul class="nav-list">
-                <li class="nav-item"><a href="{% url 'home' %}">Inicio</a></li>
-                <li class="nav-item"><a href="{% url 'posts' %}">Posteos</a></li>
-                <li class="nav-item"><a href="{% url 'detalle' %}">Popular</a></li>
-                <li class="nav-item"><a href="{% url 'formulario' %}">Registrarse</a></li>
-                <li class="nav-item"><a href="{% url 'iniciar-sesion' %}">Iniciar Sesión</a></li>
-                <li class="nav-item"><a href="{% url 'form_api_back' %}">Api pelis</a></li>
-            </ul>
-        </nav>
-        <a class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a>
-        <div class="brand">CineClub Duoc</div>
-    </div>
-    <!--SearchBox Section-->
-    <div class="search-box">
-        <div>
-            
-            <select name="" id="">
-                <option value="Everything">Buscar</option>
-                <option value="Titles">Títulos</option>
-                <option value="Descriptions">Descripción</option>
-            </select>
-            <input type="text" name="q" placeholder="Buscar ...">
-            <button><i class="fa fa-search"></i></button>
-        </div>
-    </div>
-</header>
 
-  <div class="container mt-5">
-      <h2>Listado de personajes API BACK</h2>
-      <div class="row" id="personajes"></div>
-  </div>
-  <div class="container">
-    <div class="row">
-        {% for personaje in personajes %}
-          <div class="col-md-4">
-            <div  class="card" style="width: 18rem; ">
-              <img src={{personaje.image}} class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">{{personaje.name}}</h5>
-                <p class="card-text">{{personaje.gender}} </p>
-              </div>
+<body>
+    <header>
+        <!--NavBar Section-->
+        <div class="navbar">
+            <nav class="navigation hide" id="navigation">
+                <span class="close-icon" id="close-icon" onclick="showIconBar()"><i class="fa fa-close"></i></span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="{% url 'home' %}">Inicio</a></li>
+                    <li class="nav-item"><a href="{% url 'posts' %}">Posteos</a></li>
+                    <li class="nav-item"><a href="{% url 'detalle' %}">Popular</a></li>
+                    <li class="nav-item"><a href="{% url 'formulario' %}">Registrarse</a></li>
+                    <li class="nav-item"><a href="{% url 'iniciar-sesion' %}">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+            <a class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a>
+            <div class="brand">CineClubDuoc</div>
+        </div>
+        <!--SearchBox Section-->
+        <div class="search-box">
+            <div>
+                <select name="" id="">
+                    <option value="Everything">Everything</option>
+                    <option value="Titles">Titles</option>
+                    <option value="Descriptions">Descriptions</option>
+                </select>
+                <input type="text" name="q" placeholder="search ...">
+                <button><i class="fa fa-search"></i></button>
             </div>
-          </div>
-        {% endfor %}
+        </div>
+    </header>
+    <div class="container">
+        <!--Navigation-->
+        <div class="navigate">
+            <span><a href="">serie api1</a> >> <a href="">ranking</a></span>
+        </div>
+        <!--Display posts table-->
+        <div class="container mt-5">
+          <h2>Listado de personajes API BACK</h2>
+          <div class="row" id="personajes"></div>
+      </div>
+      
+        <div class="row">
+            {% for personaje in personajes %}
+              <div class="col-md-4">
+                <div  class="card" style="width: 18rem; ">
+                  <img src={{personaje.image}} class="card-img-top card-image" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{personaje.name}}</h5>
+                    <p class="card-text">{{personaje.gender}} </p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+      
+        <!--pagination ends-->
     </div>
-  </div>
-  <footer>
-    <span>&copy;  duoc uc | Todos los derechos reservados</span>
-</footer>
-<script src="{% static 'js/main.js' %}"></script>
+
+
+    <footer>
+        <span>&copy;  Selmi Abderrahim | All Rights Reserved</span>
+    </footer>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

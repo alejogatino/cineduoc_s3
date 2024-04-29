@@ -586,6 +586,11 @@ footer{
     background-color: #111314;
 }
 
+.card-image {
+    height: 200px;
+    object-fit: cover;
+}
+
 
 
 
