@@ -12,6 +12,7 @@ urlpatterns= [
     path('formulario/', views.formulario, name='formulario'),
     path('iniciar_sesion/', views.iniciar_sesion, name='iniciar-sesion'),
     path('form-api-back',views.form_api_back,name="form_api_back"),
+    path('api-movie',views.api_movie,name="api_movie"),
    
 
 ]
