@@ -18,13 +18,14 @@ from .serializers import MovieSerializer
 from core.models import Persona
 from .serializers import PersonaSerializer
 
-##Librerìas de autenticaciòn
+##Librerìas de autenticaciòn  que se pueden comentar y no pedir la autorizacion##
 from rest_framework.decorators import permission_classes
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 @csrf_exempt
 @api_view(['GET','POST'])
+#Librerìas de autenticaciòn  que se pueden comentar y no pedir la autorizacion##
 @permission_classes((IsAuthenticated,))
 def lista_persona(request):
     if request.method == 'GET':
