@@ -1,9 +1,11 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.conf.urls.static import static
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import Usuario
+from .models import Usuario, Persona
+from django.db import connections
 import requests
 
 # Create your views here.
@@ -67,6 +69,7 @@ def formulario(request):
 #llamada de api
 def form_api_back(request):
     url= "https://rickandmortyapi.com/api/character"
+    #url= "https://imdb8.p.rapidapi.com/auto-complete?q=game"
     response = requests.get(url)
     personajes = response.json().get('results',[])
 
@@ -74,3 +77,16 @@ def form_api_back(request):
         'personajes' : personajes
     }
     return render(request, 'core/form_api_back.html',context)
+
+def api_movie(request):
+    url = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1"
+    headers = {
+        "accept": "application/json",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5YTk0NzViMDU1NzBjZmQ0MzBmYjljOTNmMmI1ZTBlNyIsInN1YiI6IjY2MmVkYzNkYTgwNjczMDEyOGU5MDY5MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.hkYOtcYfZV_O_Mfghjbqlgil1KV7TWYm18uroFh97ug"
+    }
+
+    response = requests.get(url, headers=headers)
+    data = response.json()
+
+    return render(request, 'core/api_movie.html', {'data': data})
+

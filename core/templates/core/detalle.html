@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <!--NavBar Section-->
+        <div class="navbar">
+            <nav class="navigation hide" id="navigation">
+                <span class="close-icon" id="close-icon" onclick="showIconBar()"><i class="fa fa-close"></i></span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="{% url 'home' %}">Inicio</a></li>
+                    <li class="nav-item"><a href="{% url 'posts' %}">Posteos</a></li>
+                    <li class="nav-item"><a href="{% url 'detalle' %}">Popular</a></li>
+                    <li class="nav-item"><a href="{% url 'formulario' %}">Registrarse</a></li>
+                    <li class="nav-item"><a href="{% url 'iniciar-sesion' %}">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+            <a class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a>
+            <div class="brand">CineClub Duoc</div>
+        </div>
+        <!--SearchBox Section-->
+        <div class="search-box">
+            <div>
+                <select name="" id="">
+                    <option value="Everything">Everything</option>
+                    <option value="Titles">Titles</option>
+                    <option value="Descriptions">Descriptions</option>
+                </select>
+                <input type="text" name="q" placeholder="search ...">
+                <button><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    <div class="container">
+        
+        <!--Título-->
+        <div class="subforum">
+            <div class="subforum-title">
+                <h1>Posts Populares</h1>
+            </div>
+
+                <!--Topic Section-->
+                <div class="topic-container">
+                    <!--Original thread-->
+                    <div class="head">
+                        <div class="authors">ChanchoConChupalla</div>
+                        <div class="content">Tema: Marvel me tiene con fatiga de superhéroes (Leído 1325 Veces)</div>
+                    </div>
+        
+                    <div class="body">
+                        <div class="authors">
+                            <div class="username"><a href="">CachipunDePulpo</a></div>
+                            <div>Rol</div>
+                            <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
+                            <div>Posts: <u>45</u></div>
+                            <div>Puntos: <u>4586</u></div>
+                        </div>
+                        <div class="content">
+                            La fase 5 del Universo Cinematográfico Marvel no está a la altura de lo que solía ser.
+                            <br>Hay demasiadas tramas, demasiados universos paralelos, y a nadie le importa. 
+                            <br><br>
+                            Sin mencionar lo fomes que son los nuevos shows de Disney. 
+                            <br>
+                            <hr>
+                            Respuestas a: ChanchoConChupalla
+                            <br>
+                            <div class="comment">
+                                <button onclick="showComment()">Responder</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!--Comment Area-->
+                <div class="comment-area hide" id="comment-area">
+                    <textarea name="comment" id="" placeholder="comment here ... "></textarea>
+                    <input type="submit" value="submit">
+                </div>
+        
+                <!--Comments Section-->
+                <div class="comments-container">
+                    <div class="body">
+                        <div class="authors">
+                            <div class="username"><a href="">ElMartilloDeThor</a></div>
+                            <div>Rol</div>
+                            <img src="img/gato.jpg" alt="">
+                            <div>Posts: <u>455</u></div>
+                            <div>Puntos: <u>4586</u></div>
+                        </div>
+                        <div class="content">
+                            Marvel murió con Tony Stark.
+                            <br>Esta saga debió terminarse con Endgame.
+                            <br><br>
+                            Nadie tiene tiempo para verse todas las series que hay en Disney.
+                            <br>
+                            <br>
+                            <div class="comment">
+                                <button onclick="showReply()">Responder</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Reply Area-->
+                <div class="comment-area hide" id="reply-area">
+                    <textarea name="reply" id="" placeholder="reply here ... "></textarea>
+                    <input type="submit" value="submit">
+                </div>
+        
+        
+                <!--Another Comment With replies-->
+                <div class="comments-container">
+                    <div class="body">
+                        <div class="authors">
+                            <div class="username"><a href="">ElHombreQueTeAraña</a></div>
+                            <div>Rol</div>
+                            <img src="img/rab.jpg" alt="">
+                            <div>Posts: <u>455</u></div>
+                            <div>Puntos: <u>4586</u></div>
+                        </div>
+                        <div class="content">
+                            No estoy de acuerdo. 
+                            <br>Me encantaron Loki y WandaVisión.
+                            <br><br>
+                            Ustedes no tienen gusto. 
+                            <br>
+                            <br>
+                            <div class="comment">
+                                <button onclick="showReply()">Responder</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Reply Area-->
+                <div class="comment-area hide" id="reply-area">
+                    <textarea name="reply" id="" placeholder="reply here ... "></textarea>
+                    <input type="submit" value="submit">
+                </div>
+        
+                
+        
+            </div>
+            <footer>
+                <span>&copy;  Selmi Abderrahim | Todos Los Derechos Reservados</span>
+            </footer>
+            <script src="{% static 'js/main.js' %}"></script>
+        </body>
+        </html>
